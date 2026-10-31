@@ -1,0 +1,239 @@
+<title>דיסני מחתרתי</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Heebo:wght@700;800;900&family=Rubik:wght@500;600;700&display=swap">
+<style>
+/* Layout: one reading column, park-colored bands open each day, a sticky jump bar on top. Mobile first, prints to A4. */
+:root {
+  --bg: #F3F5F9; --surface: #FFFFFF; --ink: #17212F; --muted: #566376; --line: #D9DFE8; --tint: #E9EEF5;
+  --mk: #1B2A4A; --mk2: #C9A227; --mk-a: #1B2A4A;
+  --ep: #5B3B8C; --ep2: #1FB5AD; --ep-a: #5B3B8C;
+  --hs: #9B1C2C; --hs2: #1A1A1A; --hs-a: #9B1C2C;
+  --ak: #2F5D3A; --ak2: #8B5E3C; --ak-a: #2F5D3A;
+  --gen: #2C5F8A; --gen2: #B8C2CC; --gen-a: #2C5F8A;
+  --holiday: #C0392B;
+  --ok: #2E7D32; --warn: #A86400; --bad: #C62828; --dec: #6A3FB0; --open: #5F6B7C;
+  --f-display: "Heebo", "Arial Hebrew", "Noto Sans Hebrew", Arial, sans-serif;
+  --f-body: "Assistant", "Arial Hebrew", "Noto Sans Hebrew", Arial, sans-serif;
+  --f-num: "Rubik", "Assistant", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0E141D; --surface: #161F2C; --ink: #E6EBF2; --muted: #9AA7B9; --line: #2A3647; --tint: #1C2737;
+  --mk-a: #A9BFE8; --ep-a: #C1A6EE; --hs-a: #F19AA5; --ak-a: #93CDA0; --gen-a: #93C0E6; --hs2: #3A3A3A;
+  --ok: #6FC174; --warn: #F0A43A; --bad: #F07A7A; --dec: #B89AF0; --open: #9AA7B9;
+  color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0E141D; --surface: #161F2C; --ink: #E6EBF2; --muted: #9AA7B9; --line: #2A3647; --tint: #1C2737;
+  --mk-a: #A9BFE8; --ep-a: #C1A6EE; --hs-a: #F19AA5; --ak-a: #93CDA0; --gen-a: #93C0E6; --hs2: #3A3A3A;
+  --ok: #6FC174; --warn: #F0A43A; --bad: #F07A7A; --dec: #B89AF0; --open: #9AA7B9;
+  color-scheme: dark; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 4rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.65 var(--f-body); direction: rtl; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--mk); }
+.wrap { max-width: 46rem; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mk2); outline-offset: 2px; }
+.n, .tl-time, .dc-date, .dh-date { unicode-bidi: isolate; font-variant-numeric: tabular-nums; }
+
+.park-mk { --p: var(--mk); --p2: var(--mk2); --pa: var(--mk-a); }
+.park-ep { --p: var(--ep); --p2: var(--ep2); --pa: var(--ep-a); }
+.park-hs { --p: var(--hs); --p2: var(--hs2); --pa: var(--hs-a); }
+.park-ak { --p: var(--ak); --p2: var(--ak2); --pa: var(--ak-a); }
+.park-gen { --p: var(--gen); --p2: var(--gen2); --pa: var(--gen-a); }
+
+/* cover */
+.cover { background: radial-gradient(1px 1px at 20% 30%, #ffffff99 50%, transparent 51%), radial-gradient(1px 1px at 70% 20%, #ffffff77 50%, transparent 51%), radial-gradient(1.5px 1.5px at 85% 60%, #ffffff88 50%, transparent 51%), radial-gradient(1px 1px at 40% 75%, #ffffff66 50%, transparent 51%), linear-gradient(170deg, #121D35, var(--mk) 55%, #24365C); color: #F5F1E4; }
+.cover .wrap { padding-block: 2.5rem 2rem; display: grid; gap: .75rem; }
+.bursts { width: min(100%, 22rem); height: auto; opacity: .9; }
+.cover .eyebrow { font: 600 .85rem/1 var(--f-body); letter-spacing: .08em; color: var(--mk2); }
+.cover h1 { margin: 0; font: 900 clamp(2.6rem, 11vw, 4.2rem)/1 var(--f-display); color: #F7E7B0; text-wrap: balance; }
+.cover .sub { margin: 0; font: 500 1.15rem/1.4 var(--f-num); direction: ltr; text-align: right; }
+.cover .who { margin: 0; color: #D5DCEA; max-width: 34rem; }
+.cover .ver { justify-self: start; font: 600 .8rem/1 var(--f-num); border: 1px solid #C9A22788; color: var(--mk2); padding: .35rem .6rem; border-radius: 999px; }
+
+/* jump bar */
+.jump { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.jump .wrap { display: flex; gap: .4rem; overflow-x: auto; padding-block: .55rem; scrollbar-width: none; }
+.jump a { flex: none; text-decoration: none; font: 600 .88rem/1 var(--f-body); padding: .45rem .7rem; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); }
+.jump a:hover { border-color: var(--mk2); }
+
+/* legend */
+.howto { margin-block: 1.5rem; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem; }
+.howto h2 { margin: 0 0 .5rem; font: 800 1.2rem/1.3 var(--f-display); }
+.howto p { margin: .3rem 0; }
+.legend { display: flex; flex-wrap: wrap; gap: .4rem .9rem; padding: 0; margin: .6rem 0 0; list-style: none; font-size: .92rem; color: var(--muted); }
+
+/* parts & chapters */
+.part { margin-block: 2.5rem; }
+.part-title { font: 900 1.9rem/1.1 var(--f-display); margin: 0 0 1rem; padding-bottom: .5rem; border-bottom: 3px solid var(--ink); text-wrap: balance; }
+.chapter { margin-block: 1.75rem 2.5rem; }
+.ch-head { display: flex; align-items: baseline; gap: .6rem; border-bottom: 2px solid var(--p); padding-bottom: .4rem; }
+.ch-no { font: 700 .95rem/1 var(--f-num); color: #fff; background: var(--p); border-radius: 6px; padding: .3rem .45rem; min-width: 1.9rem; text-align: center; }
+.ch-head h2 { margin: 0; font: 800 1.45rem/1.25 var(--f-display); color: var(--pa); text-wrap: balance; }
+.ch-body { min-width: 0; }
+.ch-body h3 { font: 700 1.15rem/1.3 var(--f-display); color: var(--pa); margin: 1.6rem 0 .5rem; text-wrap: balance; }
+.ch-body h4 { font: 700 1.02rem/1.35 var(--f-display); margin: 0 0 .4rem; }
+.ch-body p, .ch-body li { max-width: 65ch; }
+.ch-body ul, .ch-body ol { padding-inline-start: 1.25rem; }
+.ch-body li { margin-block: .25rem; }
+.ch-body li::marker { color: var(--p2); }
+.park-hs .ch-body li::marker, .park-gen .ch-body li::marker { color: var(--pa); }
+blockquote { margin: 1rem 0; padding: .7rem 1rem; background: var(--tint); border-inline-start: 4px solid var(--p2); border-radius: 0 8px 8px 0; font-size: .97rem; }
+blockquote p { margin: .3rem 0; }
+.park-hs blockquote { border-inline-start-color: var(--p); }
+
+/* tables */
+.tbl { overflow-x: auto; margin-block: .8rem; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+th, td { text-align: start; vertical-align: top; padding: .5rem .65rem; border-bottom: 1px solid var(--line); }
+th { background: var(--p); color: #fff; font: 700 .88rem/1.3 var(--f-display); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+tbody tr:nth-child(even) td { background: var(--tint); }
+
+/* chips */
+.chip { display: inline-flex; align-items: center; font: 700 .72rem/1.45 var(--f-body); padding: 0 .5em; border-radius: 999px; white-space: nowrap; vertical-align: .12em; border: 1px solid; }
+.c-ok, .c-ok2 { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 45%, transparent); background: color-mix(in srgb, var(--ok) 12%, transparent); }
+.c-warn, .c-warn2 { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 45%, transparent); background: color-mix(in srgb, var(--warn) 12%, transparent); }
+.c-bad { color: var(--bad); border-color: color-mix(in srgb, var(--bad) 45%, transparent); background: color-mix(in srgb, var(--bad) 10%, transparent); }
+.c-dec { color: var(--dec); border-color: color-mix(in srgb, var(--dec) 40%, transparent); background: color-mix(in srgb, var(--dec) 10%, transparent); }
+.c-open { color: var(--open); border-color: color-mix(in srgb, var(--open) 40%, transparent); }
+
+/* day cards */
+.dcards { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: .6rem; margin-block: .6rem 1rem; }
+.dcard { display: grid; gap: .2rem; align-content: start; text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--p); border-radius: 10px; padding: .65rem .75rem; min-width: 0; }
+a.dcard:hover { border-color: var(--p); }
+.dc-date { font: 700 1.4rem/1 var(--f-num); color: var(--pa); text-align: right; }
+.dc-wd { font-size: .82rem; color: var(--muted); }
+.dc-name { font: 700 .98rem/1.25 var(--f-display); }
+.dcard .chip { justify-self: start; margin-top: .2rem; }
+
+/* day header */
+.day-head { background: var(--p); color: #fff; border-radius: 14px; padding: 1.1rem 1.15rem 1rem; display: grid; gap: .25rem; position: relative; overflow: hidden; }
+.day-head::after { content: ""; position: absolute; inset: auto -2rem -2rem auto; width: 9rem; height: 9rem; border-radius: 50%; border: 10px solid color-mix(in srgb, var(--p2) 55%, transparent); }
+.park-hs .day-head::after { border-color: #ffffff22; }
+.dh-top { display: flex; gap: .6rem; font: 600 .85rem/1 var(--f-body); opacity: .9; }
+.dh-label { background: #ffffff26; padding: .25rem .5rem; border-radius: 999px; }
+.dh-wd { padding-block: .25rem; }
+.dh-date { font: 700 3rem/1 var(--f-num); text-align: right; }
+.day-head h2 { margin: 0; font: 800 1.45rem/1.2 var(--f-display); color: #fff; text-wrap: balance; position: relative; z-index: 1; }
+.facts { list-style: none; padding: 0; margin: .55rem 0 0; display: flex; flex-wrap: wrap; gap: .35rem; position: relative; z-index: 1; }
+.facts li { background: #00000033; border: 1px solid #ffffff33; border-radius: 8px; padding: .2rem .55rem; font-size: .9rem; max-width: none; }
+.draft { margin: .5rem 0 0; font-weight: 700; background: #ffffffe6; color: #7A4A00; border-radius: 8px; padding: .35rem .6rem; justify-self: start; position: relative; z-index: 1; }
+
+/* timeline */
+.tl { margin-block: .8rem 1.2rem; }
+.tl-row { display: grid; grid-template-columns: 5.6rem minmax(0, 1fr); gap: .7rem; }
+.tl-time { font: 600 .95rem/1.5 var(--f-num); color: var(--pa); text-align: right; padding-top: .55rem; overflow-wrap: anywhere; }
+.tl-body { position: relative; border-inline-start: 2px solid var(--line); padding: .5rem 1rem .6rem 0; padding-inline-start: 1rem; min-width: 0; }
+.tl-body::before { content: ""; position: absolute; inset-inline-start: -7px; top: .95rem; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); border: 3px solid var(--p); }
+.tl-body > ol, .tl-body > ul { margin: .3rem 0; }
+.tl-row.rest .tl-body { background: color-mix(in srgb, var(--ok) 9%, transparent); border-radius: 0 8px 8px 0; }
+.tl-row.rest .tl-body::before { border-color: var(--ok); }
+
+/* cut lines */
+.ifs { display: grid; gap: .5rem; margin-block: .6rem 1rem; }
+.ift { display: grid; gap: .3rem; background: var(--surface); border: 1px dashed color-mix(in srgb, var(--p) 55%, var(--line)); border-radius: 10px; padding: .6rem .8rem; }
+.ift .if { font-weight: 700; }
+.ift .k { display: inline-block; font: 700 .72rem/1.5 var(--f-body); color: #fff; background: var(--p); border-radius: 4px; padding: 0 .4rem; margin-inline-end: .45rem; vertical-align: .1em; }
+.ift .then .k { background: var(--muted); }
+
+/* record cards */
+.rec { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: .9rem 1rem .6rem; margin-block: .9rem; }
+.rec h4 { color: var(--pa); }
+.rec ul { margin: .3rem 0; }
+.meta { margin: .5rem 0 0; padding-top: .45rem; border-top: 1px solid var(--line); font-size: .8rem; color: var(--muted); }
+
+/* phrases */
+q.phrase { quotes: "“" "”"; font-style: normal; font-weight: 600; background: color-mix(in srgb, var(--mk2) 16%, transparent); border-radius: 4px; padding: 0 .2em; unicode-bidi: isolate; }
+.pcards { list-style: none; padding: 0; display: grid; gap: .55rem; }
+.pcard { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: .7rem .9rem; display: grid; gap: .3rem; max-width: none !important; }
+.pcard q.phrase { display: block; background: none; padding: 0; font: 600 1.05rem/1.45 var(--f-body); text-align: left; }
+.gloss { color: var(--muted); font-size: .93rem; }
+
+/* toolbox toc */
+.toc ol { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: .4rem; }
+.toc a { display: flex; gap: .5rem; align-items: baseline; text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: .45rem .65rem; font-weight: 600; }
+.toc a .n { font: 700 .85rem/1 var(--f-num); color: var(--gen-a); min-width: 1.4rem; }
+
+/* checklists */
+.checks .ch-body ul, .checks .ch-body ol { list-style: none; padding-inline-start: 0; }
+.chk-li { margin-block: .35rem; }
+.chk { display: flex; gap: .6rem; align-items: flex-start; cursor: pointer; }
+.chk input { flex: none; width: 1.15rem; height: 1.15rem; margin-top: .3rem; accent-color: var(--ok); }
+.chk input:checked + span { color: var(--muted); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--muted) 60%, transparent); }
+.rules .ch-body ol { counter-reset: r; list-style: none; padding: 0; display: grid; gap: .5rem; }
+.rules .ch-body li { counter-increment: r; display: grid; grid-template-columns: 2.2rem 1fr; gap: .5rem; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: .55rem .75rem; max-width: none; }
+.rules .ch-body li::before { content: counter(r); font: 700 1.25rem/1.2 var(--f-num); color: var(--mk2); }
+
+footer.end { margin-block: 3rem 2rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .88rem; }
+
+@media print {
+  .jump { display: none; }
+  body { font-size: 11pt; background: #fff; }
+  .day, #booking, #toolbox, #phrases, #checklists, #rules, .toolbox-ch { break-before: page; }
+  .rec, .ift, .pcard, .dcard, .tl-row { break-inside: avoid; }
+  .tbl { overflow: visible; }
+}
+</style>
+
+<header class="cover">
+  <div class="wrap">
+    {{COVER_SVG}}
+    <span class="eyebrow">Walt Disney World · Wilderness Lodge</span>
+    <h1>דיסני מחתרתי</h1>
+    <p class="sub">6–13.12.2026</p>
+    <p class="who">ספר הטיול של המשפחה: התוכניות היומיות, ההזמנות, והטריקים שנבדקו לתאריכים שלנו.</p>
+    <span class="ver">גרסה 31.10.2026</span>
+  </div>
+</header>
+
+<nav class="jump" aria-label="קפיצה בספר">
+  <div class="wrap">
+    <a href="#glance">במבט אחד</a>
+    <a href="#booking">29.11 הזמנות</a>
+    <a href="#day1">6.12</a>
+    <a href="#day3">8.12</a>
+    <a href="#day4">9.12</a>
+    <a href="#toolbox">ארגז הכלים</a>
+    <a href="#phrases">שיחון</a>
+    <a href="#checklists">רשימות</a>
+    <a href="#rules">כללי אצבע</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="howto" aria-labelledby="howto-h">
+    <h2 id="howto-h">איך משתמשים בספר</h2>
+    <p>כל השעות בשעון פלורידה (ET). <span class="n" dir="ltr">07:00</span> בפלורידה = <span class="n" dir="ltr">14:00</span> בישראל. מחירים ושעות נכונים לתאריך שמצוין לידם, ולכן לבדוק באפליקציה ביום עצמו.</p>
+    <ul class="legend">
+      <li><span class="chip c-ok">מאומת</span> נבדק מול מקור עדכני</li>
+      <li><span class="chip c-ok2">נבדק</span> נבדק היטב</li>
+      <li><span class="chip c-warn">תלוי מצב</span> נכון בתנאים מסוימים</li>
+      <li><span class="chip c-warn2">לאמת</span> לבדוק לפני שבונים עליו</li>
+      <li><span class="chip c-open">פתוח</span> עוד לא נבדק או נקבע</li>
+      <li><span class="chip c-bad">לא בתוקף</span> / <span class="chip c-bad">לא אצלנו</span> לא להשתמש</li>
+      <li><span class="chip c-dec">הוכרע</span> המקורות סתרו, וזו ההכרעה</li>
+    </ul>
+  </section>
+
+{{CONTENT}}
+
+  <footer class="end">דיסני מחתרתי · גרסה 31.10.2026 · נבנה מהמסמך המאוחד. דיסני משנה שעות, מחירים ונהלים לעתים קרובות.</footer>
+</main>
+
+<script>
+(function () {
+  var store = null;
+  try { store = window.localStorage; store.getItem("x"); } catch (e) { store = null; }
+  document.querySelectorAll('.chk input[data-key]').forEach(function (box) {
+    var k = "dm-check-" + box.dataset.key;
+    try { if (store && store.getItem(k) === "1") box.checked = true; } catch (e) {}
+    box.addEventListener("change", function () {
+      try { if (store) { box.checked ? store.setItem(k, "1") : store.removeItem(k); } } catch (e) {}
+    });
+  });
+})();
+</script>
