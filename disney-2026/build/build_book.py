@@ -2,8 +2,8 @@
 
 Run: python3 build/build_book.py   (from the disney-2026 folder)
 Output: book/disney-book.html
-Content rules follow chapter 24 of the master document: only chapters
-1, 3-20, 25, 26 go in; section 13.7 is dropped; nothing is added.
+Content rules follow chapter 20 of the master document: only chapters
+1-19, 21, 22 go in; nothing is added.
 """
 import hashlib
 import html
@@ -17,8 +17,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "disney-master-2026.md"
 OUT = ROOT / "book" / "disney-book.html"
 
-TOOLBOX = list(range(8, 21))
-PARK = {5: "hs", 6: "mk", 7: "ak", 11: "mk", 12: "mk"}
+TOOLBOX = list(range(7, 20))
+PARK = {4: "hs", 5: "mk", 6: "ak", 10: "mk", 11: "mk"}
 
 TAGS = {
     "🟢": ("ok", "מאומת"),
@@ -54,13 +54,13 @@ PHRASES = {
 PHRASE_GROUPS = ["מלון וצ'ק‑אין", "מושבים", "מסיבה וצילום", "תקלות ו‑Guest Relations"]
 
 DAYS = {
-    5: dict(id="day1", park="hs", num="6.12", wd="יום א'", label="יום 1", name="Hollywood Studios",
+    4: dict(id="day1", park="hs", num="6.12", wd="יום א'", label="יום 1", name="Hollywood Studios",
             facts=["EE 8:30 · 9:00–21:00", "Fantasmic 21:30, מקומות שמורים",
                    "LL: Rise SP 13:15 · TSMania 9:00 · Frozen 11:30 · RnRC 12:00", "לא בתוכנית: Tower of Terror"]),
-    6: dict(id="day3", park="mk", num="8.12", wd="יום ג'", label="יום 3 · טיוטה", name="Magic Kingdom + המסיבה",
+    5: dict(id="day3", park="mk", num="8.12", wd="יום ג'", label="יום 3 · טיוטה", name="Magic Kingdom + המסיבה",
             facts=["EE 8:30 · 9:00–18:00", "המסיבה 19:00–0:00", "מצעד 20:30 · זיקוקים 22:00",
                    "Multi Pass בלבד"], draft=True),
-    7: dict(id="day4", park="ak", num="9.12", wd="יום ד'", label="יום 4", name="Animal Kingdom → Magic Kingdom",
+    6: dict(id="day4", park="ak", num="9.12", wd="יום ד'", label="יום 4", name="Animal Kingdom → Magic Kingdom",
             facts=["AK 8:00–18:00 · הגעה 9:00", "Happily Ever After 20:00 ב‑MK",
                    "LL: Everest 9:30 · Lion King 12:00 · Na'vi 16:50"]),
 }
@@ -241,8 +241,6 @@ def chapter_html(no, ch, phrases, extra_class="", header=None):
     if no == 1:
         md = drop_subsection(md, "### ימי דיסני")
         md = md.replace("### ההחלטות של עומרי", "<!--DAYCARDS-->\n\n### ההחלטות של עומרי")
-    if no == 13:
-        md = drop_subsection(md, "### 13.7")
     body = tag_chips(render(md))
     soup = BeautifulSoup(body, "html.parser")
     transform(soup, no, phrases)
@@ -347,12 +345,12 @@ def main():
     phrases = []
     parts = []
 
-    glance = chapter_html(1, ch[1], phrases) + chapter_html(3, ch[3], phrases)
+    glance = chapter_html(1, ch[1], phrases) + chapter_html(2, ch[2], phrases)
     parts.append(f'<div id="glance" class="part"><h2 class="part-title">הטיול במבט אחד</h2>{glance}</div>')
-    parts.append(f'<div id="booking" class="part">{chapter_html(4, ch[4], phrases, "booking")}</div>')
+    parts.append(f'<div id="booking" class="part">{chapter_html(3, ch[3], phrases, "booking")}</div>')
 
     days = "".join(chapter_html(n, ch[n], phrases, "day", day_header(DAYS[n])).replace(f'id="ch{n}"', f'id="{DAYS[n]["id"]}"')
-                   for n in (5, 6, 7))
+                   for n in (4, 5, 6))
     parts.append(f'<div class="part"><h2 class="part-title">הימים</h2>{days}</div>')
 
     toc = "".join(f'<li><a href="#ch{n}"><span class="n" dir="ltr">{n}</span> {ch[n]["title"]}</a></li>' for n in TOOLBOX)
@@ -361,8 +359,8 @@ def main():
                  f'<nav class="toc" aria-label="פרקי ארגז הכלים"><ol>{toc}</ol></nav>{tools}</div>')
 
     parts.append(phrasebook(phrases))
-    parts.append(f'<div id="checklists" class="part">{checklist(chapter_html(26, ch[26], phrases, "checks"))}</div>')
-    parts.append(f'<div id="rules" class="part">{chapter_html(25, ch[25], phrases, "rules")}</div>')
+    parts.append(f'<div id="checklists" class="part">{checklist(chapter_html(22, ch[22], phrases, "checks"))}</div>')
+    parts.append(f'<div id="rules" class="part">{chapter_html(21, ch[21], phrases, "rules")}</div>')
 
     tpl = (ROOT / "build" / "template.html").read_text(encoding="utf-8")
     page = tpl.replace("{{COVER_SVG}}", cover_svg()).replace("{{CONTENT}}", "\n".join(parts))
