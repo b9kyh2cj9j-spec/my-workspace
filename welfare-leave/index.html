@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הון של זכויות - מכסות חופשה ומחלה | משרד הרווחה</title>
+<meta name="description" content="ימי חופשה, מחלה ומנוחה לעובדי משרד הרווחה והביטחון החברתי – מכסות, צבירה, פדיון, ערבי חג, ימים מקוצרים, חופשה מרוכזת וצומות.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#071626; --bg2:#0c2036; --bg3:#050f1c; --gold:#d4af37; --gold-l:#f0d98a; --gold-d:#b8902a;
+  --text:#e8edf3; --muted:#9fb0c3; --line:rgba(212,175,55,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Assistant',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.gold-text{background:linear-gradient(90deg,var(--gold-d),var(--gold-l),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.accent{color:var(--gold)}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(7,22,38,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hdr{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;max-width:1180px;margin:0 auto}
+.hdr .brand{font-weight:800;font-size:1.25rem}
+.hdr .side{font-size:.85rem;color:var(--muted);max-width:220px;line-height:1.3}
+.hdr .side b{display:block;color:var(--text);font-weight:600}
+.hdr .side.left{text-align:left}
+
+/* ornaments */
+.orn{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--gold);margin:0 auto}
+.orn::before,.orn::after{content:"";width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.orn::after{transform:scaleX(-1)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.6;margin:56px 0}
+
+/* hero */
+.hero{min-height:calc(100vh - 70px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 16px;position:relative}
+.hero .sub{font-style:italic;font-weight:600;color:var(--gold-l);font-size:1.5rem;margin:18px 0 6px}
+.hero h1{font-size:clamp(2.4rem,7vw,4.2rem);font-weight:800;line-height:1.15;margin-bottom:18px}
+.hero .ministry{color:var(--muted);font-size:1.05rem;margin-top:10px}
+.hero .down{position:absolute;bottom:24px;color:var(--gold);animation:bob 2s infinite;text-decoration:none;font-size:1.4rem}
+@keyframes bob{50%{transform:translateY(6px)}}
+
+section{padding:40px 0}
+h2{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:800;text-align:center;margin:12px 0 28px;line-height:1.25}
+.lead{text-align:center;color:var(--muted);max-width:640px;margin:-14px auto 32px}
+
+.card{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 60px -30px rgba(212,175,55,.35)}
+.intro{max-width:680px;margin:0 auto;padding:32px 40px;text-align:center;font-size:1.1rem}
+.intro p+p{margin-top:8px}
+
+/* quotas */
+.group{margin-bottom:44px}
+.group-title{display:flex;align-items:center;justify-content:center;gap:12px;font-size:1.35rem;font-weight:700;color:var(--gold-l);margin-bottom:22px}
+.badge{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold-d),var(--gold-l),var(--gold));color:var(--bg);font-size:1.1rem}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.q{padding:0;text-align:right;color:var(--text);transition:transform .25s,border-color .25s;overflow:hidden}
+.q:hover{transform:translateY(-3px);border-color:var(--gold)}
+.q-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;width:100%;background:none;border:0;color:inherit;font-size:1.1rem;font-weight:700}
+.q-head .num{font-size:1.9rem;font-weight:800}
+.q-head .chev{color:var(--gold);transition:transform .3s}
+.q.open .chev{transform:rotate(180deg)}
+.q-body{max-height:0;transition:max-height .35s ease;padding:0 20px}
+.q.open .q-body{max-height:420px}
+.q dl{padding-bottom:18px;border-top:1px solid var(--line);padding-top:12px}
+.q dt{font-size:.82rem;color:var(--gold);font-weight:600;margin-top:8px}
+.q dd{font-size:.98rem}
+.note-box{padding:22px 28px;margin-top:8px}
+.note-box h3{color:var(--gold-l);font-size:1.15rem;margin-bottom:8px}
+.note-box li{margin:6px 22px 0 0}
+
+/* special days */
+.sgrid{display:flex;flex-wrap:wrap;justify-content:center;gap:28px 40px;max-width:820px;margin:0 auto}
+.sday{background:none;border:0;color:var(--text);display:flex;flex-direction:column;align-items:center;gap:12px;width:150px;font-size:1.05rem;font-weight:600}
+.circle{width:118px;height:118px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold-d),var(--gold-l) 55%,var(--gold));box-shadow:0 0 40px -6px rgba(212,175,55,.55);transition:transform .25s}
+.sday:hover .circle{transform:scale(1.06)}
+.circle svg{width:42px;height:42px;stroke:#2b2410}
+.partial{text-align:center;margin-top:36px;color:var(--gold-l);font-weight:600}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(3,10,18,.8);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:100;padding:16px}
+.modal.show{display:flex}
+.modal .card{max-width:560px;width:100%;max-height:88vh;overflow:auto;padding:30px 28px;position:relative}
+.modal h3{font-size:1.6rem;margin-bottom:12px}
+.modal .x{position:absolute;top:14px;left:16px;background:none;border:0;color:var(--gold);font-size:1.6rem;line-height:1}
+.row{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;margin-top:8px;background:rgba(255,255,255,.02)}
+.row b{color:var(--gold-l)}
+.know{margin-top:14px;padding:12px 14px;border-right:3px solid var(--gold);background:rgba(212,175,55,.07);border-radius:8px}
+.small{font-size:.9rem;color:var(--muted);margin-top:10px}
+
+/* faq */
+.faq{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.fq{border-radius:16px}
+.fq button{width:100%;background:none;border:0;color:var(--text);display:flex;align-items:center;gap:14px;padding:20px 22px;font-size:1.08rem;text-align:right}
+.fq .ic{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold);font-weight:700}
+.fq .ans{max-height:0;overflow:hidden;transition:max-height .35s;padding:0 76px 0 22px;color:var(--muted)}
+.fq.open .ans{max-height:300px;padding-bottom:20px}
+
+/* contacts */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.unit{padding:18px 20px}
+.unit h4{color:var(--gold-l);font-size:1.05rem;margin-bottom:8px}
+.unit li{list-style:none;padding:3px 0;border-bottom:1px dashed rgba(212,175,55,.15)}
+.unit li:last-child{border:0}
+
+/* closing */
+.closing{text-align:center}
+.closing .big{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;margin:10px 0}
+.btn{display:inline-block;margin-top:18px;padding:12px 28px;border-radius:999px;background:linear-gradient(135deg,var(--gold-d),var(--gold-l),var(--gold));color:var(--bg);font-weight:800;text-decoration:none;border:0;font-size:1rem}
+
+/* feedback */
+.fb{max-width:520px;margin:0 auto;padding:28px}
+.rates{display:flex;flex-direction:column;gap:8px;margin:16px 0}
+.rate{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.02);color:var(--text);font-size:1rem}
+.rate.sel{background:rgba(212,175,55,.18);border-color:var(--gold)}
+.rate span:first-child{font-size:1.4rem}
+textarea{width:100%;min-height:90px;border-radius:12px;border:1px solid var(--line);background:var(--bg3);color:var(--text);padding:12px;font-family:inherit;font-size:1rem;resize:vertical}
+.fb .btn{width:100%}
+.fb .btn:disabled{opacity:.45;cursor:not-allowed}
+.thanks{text-align:center;font-size:1.15rem;display:none}
+
+/* footer */
+footer{border-top:1px solid var(--line);margin-top:40px;padding:28px 0;background:var(--bg3)}
+.fnav{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:20px}
+.fnav a{display:block;padding:14px 16px;border:1px solid var(--line);border-radius:12px;text-decoration:none}
+.fnav a small{display:block;color:var(--muted)}
+.fnav a.cur{border-color:var(--gold);background:rgba(212,175,55,.08)}
+.copy{text-align:center;color:var(--muted);font-size:.9rem}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}*{transition:none!important;animation:none!important}}
+@media (max-width:640px){
+  .hdr .side{display:none}
+  .intro{padding:24px 20px}
+  .fq .ans{padding-right:22px}
+  .sday{width:130px}.circle{width:96px;height:96px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hdr">
+    <div class="side"><b>מינהל משאבי אנוש</b>משרד הרווחה והביטחון החברתי</div>
+    <div class="brand gold-text">הון של זכויות</div>
+    <div class="side left"><b>משרד הרווחה</b>והביטחון החברתי</div>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="orn">✦</div>
+  <div class="sub">והינה מנה שכיף לקבל...</div>
+  <h1 class="gold-text">ימי חופשה מחלה ומנוחה</h1>
+  <div class="orn">✦</div>
+  <div class="ministry">לעובדות ולעובדי משרד הרווחה והביטחון החברתי</div>
+  <a class="down" href="#what" aria-label="גלילה למטה">⌄</a>
+</div>
+
+<div class="wrap">
+  <section id="what" class="reveal">
+    <h2 class="gold-text">מהם ימי חופשה מחלה ומנוחה?</h2>
+    <div class="card intro">
+      <p>ימי חופשה מחלה ומנוחה הם ימים שבהם עובד רשאי להיעדר מהעבודה לצורך מנוחה, נופש או סידורים אישיים – תוך שמירה על שכרו. ימי מחלה נועדו לזמנים בהם נדרשים למנוחה בשל מחלה או עבור בדיקות.</p>
+      <p>המטרה שלהם היא לאפשר לעובד להתאוורר, לנוח ולשמור על איזון בין החיים האישיים לעבודה – וזה חשוב במיוחד בעבודה הטיפולית והמאתגרת שלנו במשרד הרווחה.</p>
+      <p>בעמוד הזה תמצאו כמה ימים מגיע לכם בכל מכסה, מה אפשר לצבור ומה ניתן לפדות, וגם את ערבי החג, הימים המקוצרים, החופשה המרוכזת, והצומות – כדי שתדעו בדיוק מה מגיע לכם ואיך לממש אותו.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="reveal">
+    <div class="orn">✦</div>
+    <h2>מה כלול ב<span class="gold-text">ימי חופשה מחלה ומנוחה?</span></h2>
+    <p class="lead">כל סוג של מכסה, הזכאות השנתית, האפשרות לצבור, הפדיון בסיום העסקה וההערות החשובות – לפי התקן שלך. לחצו על כרטיס לפרטים.</p>
+    <div id="quotas"></div>
+    <div class="card note-box">
+      <h3>חשוב לשים לב</h3>
+      <ul>
+        <li>ימי מחלה מנוכים קלנדרית, כולל בימי מנוחה וסופי שבוע, בהתאם לאישור רופא.</li>
+        <li>חל איסור לעבוד בעת מחלת עובד/ת שניתנה על ידי רופא/ה.</li>
+        <li>הזכאות לכל אחת מהמכסות הינה בהתאם לחלקיות העסקה.</li>
+        <li>עובדים במשמרות במעונות, במסגרות ובמוקדי החירום – ההסדרים בערבי חג ובחופשה המרוכזת נקבעים בהתאם לצורכי היחידה. פנו לנציג/ת משאבי האנוש ביחידה.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="reveal">
+    <div class="orn">✦</div>
+    <h2>איזה עוד ימים מיוחדים יש <span class="gold-text">לאורך השנה?</span></h2>
+    <div class="sgrid" id="special"></div>
+    <p class="partial">אני עובד/ת במשרה חלקית? הזכאות הינה באופן יחסי.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="reveal">
+    <div class="orn">✦</div>
+    <h2>יש <span class="accent">לי</span> שאלה:</h2>
+    <div class="faq" id="faq"></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="reveal closing">
+    <div class="orn">✦</div>
+    <p class="big gold-text">מקווים שנהניתם מהמנה</p>
+    <p>תרצו להזמין עוד מהתפריט?</p>
+    <a class="btn" id="portalLink" href="#">היכנסו לאתר המרכז של הון של זכויות</a>
+    <div class="card intro" style="margin-top:40px">
+      <p class="big gold-text" style="font-size:1.5rem">אנו מאחלות לך חופשה נעימה ובריאות איתנה.</p>
+      <p>המכסות כאן כדי לשרת אותך – נצלו אותן בכיף ובשלווה</p>
+    </div>
+  </section>
+
+  <section class="reveal" id="contact">
+    <div class="orn">✦</div>
+    <h2>יש לך <span class="gold-text">שאלה?</span></h2>
+    <p class="lead">צוות משאבי האנוש במטה, במחוזות וביחידות כאן לרשותך.</p>
+    <div class="cgrid" id="contacts"></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="reveal">
+    <div class="card fb">
+      <h2 style="margin:0 0 4px;font-size:1.5rem">האם המידע הזה עזר לך?</h2>
+      <form id="fbForm">
+        <div class="rates" id="rates"></div>
+        <textarea id="fbText" placeholder="יש עוד משהו שתרצו לשתף? נשמח לשמוע..."></textarea>
+        <button class="btn" type="submit" id="fbSend" disabled>ספרו לנו!</button>
+      </form>
+      <p class="thanks" id="thanks">💝<br>תודה רבה! המשוב שלך חשוב לנו.</p>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p style="font-weight:700;color:var(--gold-l)">סט הזכויות</p>
+    <p class="small" style="margin:0 0 12px">אפשר לעבור בין כל שלבי הזכויות</p>
+    <nav class="fnav">
+      <a id="portalLink2" href="#">הון של זכויות – הפורטל המרכזי<small>כל הזכויות במקום אחד</small></a>
+      <a class="cur" href="#">מכסות חופשה ומחלה<small>ימי חופשה, מחלה ומנוחה · העמוד הנוכחי</small></a>
+    </nav>
+    <p class="copy">© <span id="yr"></span> משרד הרווחה והביטחון החברתי · מינהל משאבי אנוש</p>
+  </div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="card"><button class="x" aria-label="סגירה" id="mClose">×</button><div id="mBody"></div></div>
+</div>
+
+<script>
+/* ===== הגדרות לעריכה ===== */
+const CONFIG = {
+  // קישור לפורטל המרכזי של "הון של זכויות" במשרד הרווחה
+  portalUrl: "#",
+  // כתובת מייל לקבלת משוב (אופציונלי). אם ריק – המשוב יוצג כתודה בלבד.
+  feedbackEmail: ""
+};
+
+/* מכסות – לפי התקשי"ר, זהות לכלל עובדי המדינה */
+const QUOTAS = [
+  {group:"עובדי מדינה בתקן ואזרחים ותיקים", icon:"★", items:[
+    {name:"ימי חופשה רגילים", num:"22", per:"22 ימים בשנה", acc:"כן – עד 55 ימים לשנה הבאה", redeem:"כן", note:"חובה לנצל לפחות 14 ימים בכל שנה"},
+    {name:"ימי בחירה אישיים", num:"2", per:"2 ימים בשנה", acc:"כן – עד 2 ימים לשנה הבאה", redeem:"לא", note:"לא ניתנים לניצול ברצף"},
+    {name:"ימי מחלה", num:"30", per:"30 ימים בשנה", acc:"ללא הגבלה", redeem:"יתכן – לפי ותק וגיל פרישה", note:"כוללים מחלות בני משפחה"},
+    {name:"ימי הצהרה", num:"2", per:"2 ימים מתוך ימי המחלה", acc:"כחלק מימי המחלה", redeem:"לא", note:"אין צורך באישור רפואי"}
+  ]},
+  {group:"סטודנטים בשירות המדינה", icon:"☆", items:[
+    {name:"ימי חופשה רגילים", num:"12", per:"12 ימים בשנה (יום לחודש)", acc:"עד 4 ימים בכל שנה, ועד 30 סה״כ", redeem:"כן", note:"ניתן לניצול לאחר 3 חודשי עבודה"},
+    {name:"ימי בחירה אישיים", num:"2", per:"2 ימים בשנה", acc:"כן – עד 2 ימים לשנה הבאה", redeem:"לא", note:"רק אם עבד/ה או שהה/תה בחופשה יום לפני או יום אחרי"},
+    {name:"ימי מחלה", num:"18", per:"18 ימים בשנה (יום וחצי לחודש)", acc:"ללא הגבלה", redeem:"לא", note:"כוללים מחלות בני משפחה"},
+    {name:"ימי הצהרה", num:"2", per:"2 ימים מתוך ימי המחלה", acc:"כחלק מימי המחלה", redeem:"לא", note:"אין צורך באישור רפואי"},
+    {name:"ימי בחינה", num:"1", per:"יום אחד בשנה", acc:"כן", redeem:"לא", note:"לשימוש אחרי 3 חודשי עבודה, באופן יחסי"}
+  ]}
+];
+
+const ICONS = {
+  cal:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 15h3M13 15h3"/></svg>',
+  clock:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  sun:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+  moon:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>',
+  star:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/></svg>'
+};
+
+const rows = r => r.map(([a,b])=>`<div class="row"><span>${a}</span><b>${b}</b></div>`).join("");
+const SPECIAL = [
+  {title:"ערבי חג", icon:"cal", html:`<p>משרדנו לא עובד בערבי החגים הבאים:</p>${rows([["ערב ראש השנה","יום היעדרות מלא"],["ערב יום כיפור","יום היעדרות מלא"],["ערב חג שבועות","יום היעדרות מלא"]])}
+    <div class="know"><b>חשוב לדעת:</b> על כל ערב חג אשר הינו יום עבודה, ינוכה שליש יום חופשה מהמכסה של העובד/ת.</div>
+    <p class="small">* סטודנטים ואזרחים ותיקים לא זכאים לימים אלו וגם לא מנוכה להם שליש יום חופשה.</p>
+    <p class="small">* ביחידות הפועלות ברציפות (מעונות, מסגרות ומוקדים) – לפי סידור העבודה ביחידה.</p>`},
+  {title:"ימי עבודה מקוצרים", icon:"clock", html:`<p>עובדים חודשיים המועסקים לפחות 5 ימים בשבוע זכאים לימי עבודה מקוצרים בערבי החגים הבאים:</p>${rows([["פורים / שושן פורים","יום אחד לבחירה – 7 שעות עבודה"],["ערב חנוכה – ערב הנר הראשון","7 שעות עבודה"],["ערב יום הזיכרון","5.5 שעות עבודה"]])}
+    <p class="small">* סטודנטים ואזרחים ותיקים לא זכאים לימים אלו.</p>`},
+  {title:"חופשה מרוכזת", icon:"sun", html:`<p>במשרדנו מתקיימת חופשה מרוכזת בשתי תקופות בשנה:</p>${rows([["חג סוכות","ינוכו 2.5 ימי חופשה"],["חג פסח","ינוכו 2 ימי חופשה"]])}
+    <div class="know"><b>נתבקשתם לעבוד בחופשה מרוכזת?</b> הדבר מצריך אישור מיוחד – פנו לצוות משאבי האנוש לקבל אישור לכך. עובדי מעונות, מסגרות ומוקדי חירום עובדים לפי סידור העבודה ביחידה.</div>`},
+  {title:"צומות", icon:"moon", html:`<p>עובדים הצמים בימי צום לפי דתם, רשאים לאחר לעבודה או לסיים את יום עבודתם שעה וחצי לפני הזמן, כל אחד לפי התקן שלו.</p>
+    <div class="know"><b>עובדים בדור א׳</b> יהיו זכאים לעיגולי שעון ביום הצום בלבד (החתמת כרטיס עד שעה 7:42 תיחשב לשעה 7:30), ובנוסף יהיו זכאים לשעות חוסר/מאגר חודשי (חוסר של עד 1.7 בחודש זה).</div>
+    <p class="small">* סטודנטים ואזרחים ותיקים זכאים לשעות צום רק אם הצום חל ביום עבודתם הקבוע, בו הם עובדים בדרך כלל לפחות 8 שעות.</p>`},
+  {title:"ימי חג ומועד", icon:"star", html:`<p>ימי החגים עצמם והמועדים מזכים בתשלום מלא. עובדים לא יהודים רשאים לבחור את המועדים או על פי דתם או על פי לוח השנה היהודי.</p>`}
+];
+
+const FAQ = [
+  ["מתי אפשר להתחיל להשתמש בימי החופשה והמחלה?","ניתן לנצל ימי חופשה וימי מחלה לאחר 3 חודשי עבודה. הזכאות לכל אחת מהמכסות הינה בהתאם לחלקיות העסקה."],
+  ["אפשר לצבור ימי חופשה לשנה הבאה?","כן. עובדי מדינה בתקן ואזרחים ותיקים רשאים לצבור עד 55 ימים לשנה הבאה, וסטודנטים עד 4 ימים בכל שנה ועד 30 ימים סה״כ. חשוב להקפיד לנצל לפחות 14 ימים בכל שנה."],
+  ["יש פדיון כספי עבור הימים שלא ניצלתי?","ימי חופשה רגילים ניתנים לפדיון בסיום העסקה. ימי בחירה אישיים, ימי הצהרה וימי בחינה אינם ניתנים לפדיון. בימי מחלה – ייתכן פדיון בהתאם לוותק ולגיל הפרישה."],
+  ["אפשר לנצל ימי בחירה אישיים ברצף?","לא. ימי הבחירה האישיים אינם ניתנים לניצול ברצף. סטודנטים זכאים לימי בחירה רק אם עבדו או שהו בחופשה יום לפני או יום אחרי."],
+  ["צריך אישור רפואי עבור ימי הצהרה?","לא. ימי ההצהרה ניתנים כחלק מימי המחלה ואין צורך באישור רפואי."],
+  ["איך נספרים ימי מחלה?","ימי מחלה מנוכים קלנדרית, כולל בימי מנוחה וסופי שבוע, בהתאם לאישור רופא. כמו כן חל איסור לעבוד בעת מחלת עובד/ת שניתנה על ידי רופא/ה."],
+  ["מי זכאי/ת לימים מקוצרים?","ימי עבודה מקוצרים בערבי החגים ניתנים לעובדים חודשיים המועסקים לפחות 5 ימים בשבוע. סטודנטים ואזרחים ותיקים לא זכאים לימים אלו. הזכאות כולה הינה באופן יחסי להיקף המשרה."],
+  ["אני עובד/ת במשמרות במעון או במסגרת – מה חל עליי?","המכסות השנתיות זהות לכלל עובדי המדינה. ההסדרים בערבי חג, בחופשה המרוכזת ובימים המקוצרים נקבעים לפי סידור העבודה ביחידה – פנו לנציג/ת משאבי האנוש ביחידה שלכם."],
+  ["אני עובד/ת במשרה חלקית – מה המכסה שלי?","הזכאות הינה יחסית להיקף המשרה, בכל אחת מהמכסות: ימי חופשה, ימי מחלה, ימי הצהרה ושאר ההטבות."],
+  ["למי פונים בשאלה על המכסות שלי?","נציג/ת משאבי האנוש במטה, במחוז או ביחידה שלך הוא/היא הכתובת הראשונה לבירור היתרה, אופן הדיווח והמסמכים הנדרשים."]
+];
+
+/* אנשי קשר – יש להשלים שמות לפי היחידות */
+const CONTACTS = [
+  {unit:"מטה המשרד – ירושלים", people:["שם נציג/ה","שם נציג/ה"]},
+  {unit:"מחוז ירושלים", people:["שם נציג/ה"]},
+  {unit:"מחוז תל אביב והמרכז", people:["שם נציג/ה"]},
+  {unit:"מחוז חיפה והצפון", people:["שם נציג/ה"]},
+  {unit:"מחוז באר שבע והדרום", people:["שם נציג/ה"]},
+  {unit:"מעונות ומסגרות חוץ-ביתיות", people:["שם נציג/ה"]},
+  {unit:"מינהל משאבי אנוש – שכר ותנאי שירות", people:["שם נציג/ה"]},
+  {unit:"רווחה ארגונית", people:["שם נציג/ה"]}
+];
+
+/* ===== רינדור ===== */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+$("#quotas").innerHTML = QUOTAS.map(g=>`
+  <div class="group"><div class="group-title"><span class="badge">${g.icon}</span>${g.group}</div>
+  <div class="qgrid">${g.items.map(q=>`
+    <div class="card q"><button class="q-head" aria-expanded="false"><span>${q.name}</span><span><span class="num gold-text">${q.num}</span> <span class="chev">⌄</span></span></button>
+    <div class="q-body"><dl>
+      <dt>כמה מגיע לי בשנה</dt><dd>${q.per}</dd>
+      <dt>אפשר לצבור?</dt><dd>${q.acc}</dd>
+      <dt>יש פדיון כספי בסיום העסקה?</dt><dd>${q.redeem}</dd>
+      <dt>הערות חשובות</dt><dd>${q.note}</dd>
+    </dl></div></div>`).join("")}</div></div>`).join("");
+document.querySelectorAll(".q-head").forEach(b=>b.onclick=()=>{const c=b.parentElement;c.classList.toggle("open");b.setAttribute("aria-expanded",c.classList.contains("open"))});
+
+$("#special").innerHTML = SPECIAL.map((s,i)=>`<button class="sday" data-i="${i}"><span class="circle">${ICONS[s.icon]}</span>${s.title}</button>`).join("");
+const modal=$("#modal");
+document.querySelectorAll(".sday").forEach(b=>b.onclick=()=>{const s=SPECIAL[b.dataset.i];$("#mBody").innerHTML=`<h3 class="gold-text">${s.title}</h3>${s.html}`;modal.classList.add("show");$("#mClose").focus()});
+const closeM=()=>modal.classList.remove("show");
+$("#mClose").onclick=closeM; modal.onclick=e=>{if(e.target===modal)closeM()}; document.addEventListener("keydown",e=>{if(e.key==="Escape")closeM()});
+
+$("#faq").innerHTML = FAQ.map(([q,a],i)=>`<div class="card fq"><button aria-expanded="false"><span class="ic">?</span><span>${q}</span></button><div class="ans">${a}</div></div>`).join("");
+document.querySelectorAll(".fq button").forEach(b=>b.onclick=()=>{const c=b.parentElement;c.classList.toggle("open");b.setAttribute("aria-expanded",c.classList.contains("open"))});
+
+$("#contacts").innerHTML = CONTACTS.map(c=>`<div class="card unit"><h4>${esc(c.unit)}</h4><ul>${c.people.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></div>`).join("");
+
+["portalLink","portalLink2"].forEach(id=>document.getElementById(id).href=CONFIG.portalUrl);
+$("#yr").textContent = new Date().getFullYear();
+
+const RATES=[["😉","מעולה",5],["😊","טוב",4],["😐","בסדר",3],["🙁","פחות",2],["😢","לא עזר",1]];
+let rating=0;
+$("#rates").innerHTML = RATES.map(([e,l,v])=>`<button type="button" class="rate" data-v="${v}"><span>${e}</span><span>${l}</span><span class="accent">${v}</span></button>`).join("");
+document.querySelectorAll(".rate").forEach(b=>b.onclick=()=>{document.querySelectorAll(".rate").forEach(x=>x.classList.remove("sel"));b.classList.add("sel");rating=+b.dataset.v;$("#fbSend").disabled=false});
+$("#fbForm").onsubmit=e=>{
+  e.preventDefault();
+  if(CONFIG.feedbackEmail){
+    const body=encodeURIComponent(`דירוג: ${rating}/5\n${$("#fbText").value}`);
+    location.href=`mailto:${CONFIG.feedbackEmail}?subject=${encodeURIComponent("משוב – מכסות חופשה ומחלה")}&body=${body}`;
+  }
+  $("#fbForm").style.display="none"; $("#thanks").style.display="block";
+};
+
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
