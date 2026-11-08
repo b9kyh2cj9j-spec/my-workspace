@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
 <style>
 :root{
   --bg:#071626; --bg2:#0c2036; --bg3:#050f1c; --gold:#d4af37; --gold-l:#f0d98a; --gold-d:#b8902a;
@@ -63,7 +64,7 @@ h2{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:800;text-align:center;margin:1
 .q-head .num{font-size:1.9rem;font-weight:800}
 .q-head .chev{color:var(--gold);transition:transform .3s}
 .q.open .chev{transform:rotate(180deg)}
-.q-body{max-height:0;transition:max-height .35s ease;padding:0 20px}
+.q-body{overflow:hidden;padding:0 20px}.js .q-body{max-height:0;transition:max-height .35s ease;padding:0 20px}
 .q.open .q-body{max-height:420px}
 .q dl{padding-bottom:18px;border-top:1px solid var(--line);padding-top:12px}
 .q dt{font-size:.82rem;color:var(--gold);font-weight:600;margin-top:8px}
@@ -96,7 +97,8 @@ h2{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:800;text-align:center;margin:1
 .fq{border-radius:16px}
 .fq button{width:100%;background:none;border:0;color:var(--text);display:flex;align-items:center;gap:14px;padding:20px 22px;font-size:1.08rem;text-align:right}
 .fq .ic{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold);font-weight:700}
-.fq .ans{max-height:0;overflow:hidden;transition:max-height .35s;padding:0 76px 0 22px;color:var(--muted)}
+.fq .ans{overflow:hidden;padding:0 76px 20px 22px;color:var(--muted)}
+.js .fq .ans{max-height:0;transition:max-height .35s;padding-bottom:0}
 .fq.open .ans{max-height:300px;padding-bottom:20px}
 
 /* contacts */
@@ -130,8 +132,8 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:28px 0;backgroun
 .fnav a.cur{border-color:var(--gold);background:rgba(212,175,55,.08)}
 .copy{text-align:center;color:var(--muted);font-size:.9rem}
 
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
-.reveal.in{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.js .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}*{transition:none!important;animation:none!important}}
 @media (max-width:640px){
   .hdr .side{display:none}
@@ -177,7 +179,74 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:28px 0;backgroun
     <div class="orn">✦</div>
     <h2>מה כלול ב<span class="gold-text">ימי חופשה מחלה ומנוחה?</span></h2>
     <p class="lead">כל סוג של מכסה, הזכאות השנתית, האפשרות לצבור, הפדיון בסיום העסקה וההערות החשובות – לפי התקן שלך. לחצו על כרטיס לפרטים.</p>
-    <div id="quotas"></div>
+    <div id="quotas">
+  <div class="group"><div class="group-title"><span class="badge">★</span>עובדי מדינה בתקן ואזרחים ותיקים</div>
+  <div class="qgrid">
+    <div class="card q"><button class="q-head" aria-expanded="false"><span>ימי חופשה רגילים</span><span><span class="num gold-text">22</span> <span class="chev">⌄</span></span></button>
+    <div class="q-body"><dl>
+      <dt>כמה מגיע לי בשנה</dt><dd>22 ימים בשנה</dd>
+      <dt>אפשר לצבור?</dt><dd>כן – עד 55 ימים לשנה הבאה</dd>
+      <dt>יש פדיון כספי בסיום העסקה?</dt><dd>כן</dd>
+      <dt>הערות חשובות</dt><dd>חובה לנצל לפחות 14 ימים בכל שנה</dd>
+    </dl></div></div>
+    <div class="card q"><button class="q-head" aria-expanded="false"><span>ימי בחירה אישיים</span><span><span class="num gold-text">2</span> <span class="chev">⌄</span></span></button>
+    <div class="q-body"><dl>
+      <dt>כמה מגיע לי בשנה</dt><dd>2 ימים בשנה</dd>
+      <dt>אפשר לצבור?</dt><dd>כן – עד 2 ימים לשנה הבאה</dd>
+      <dt>יש פדיון כספי בסיום העסקה?</dt><dd>לא</dd>
+      <dt>הערות חשובות</dt><dd>לא ניתנים לניצול ברצף</dd>
+    </dl></div></div>
+    <div class="card q"><button class="q-head" aria-expanded="false"><span>ימי מחלה</span><span><span class="num gold-text">30</span> <span class="chev">⌄</span></span></button>
+    <div class="q-body"><dl>
+      <dt>כמה מגיע לי בשנה</dt><dd>30 ימים בשנה</dd>
+      <dt>אפשר לצבור?</dt><dd>ללא הגבלה</dd>
+      <dt>יש פדיון כספי בסיום העסקה?</dt><dd>יתכן – לפי ותק וגיל פרישה</dd>
+      <dt>הערות חשובות</dt><dd>כוללים מחלות בני משפחה</dd>
+    </dl></div></div>
+    <div class="card q"><button class="q-head" aria-expanded="false"><span>ימי הצהרה</span><span><span class="num gold-text">2</span> <span class="chev">⌄</span></span></button>
+    <div class="q-body"><dl>
+      <dt>כמה מגיע לי בשנה</dt><dd>2 ימים מתוך ימי המחלה</dd>
+      <dt>אפשר לצבור?</dt><dd>כחלק מימי המחלה</dd>
+      <dt>יש פדיון כספי בסיום העסקה?</dt><dd>לא</dd>
+      <dt>הערות חשובות</dt><dd>אין צורך באישור רפואי</dd>
+    </dl></div></div></div></div>
+  <div class="group"><div class="group-title"><span class="badge">☆</span>סטודנטים בשירות המדינה</div>
+  <div class="qgrid">
+    <div class="card q"><button class="q-head" aria-expanded="false"><span>ימי חופשה רגילים</span><span><span class="num gold-text">12</span> <span class="chev">⌄</span></span></button>
+    <div class="q-body"><dl>
+      <dt>כמה מגיע לי בשנה</dt><dd>12 ימים בשנה (יום לחודש)</dd>
+      <dt>אפשר לצבור?</dt><dd>עד 4 ימים בכל שנה, ועד 30 סה״כ</dd>
+      <dt>יש פדיון כספי בסיום העסקה?</dt><dd>כן</dd>
+      <dt>הערות חשובות</dt><dd>ניתן לניצול לאחר 3 חודשי עבודה</dd>
+    </dl></div></div>
+    <div class="card q"><button class="q-head" aria-expanded="false"><span>ימי בחירה אישיים</span><span><span class="num gold-text">2</span> <span class="chev">⌄</span></span></button>
+    <div class="q-body"><dl>
+      <dt>כמה מגיע לי בשנה</dt><dd>2 ימים בשנה</dd>
+      <dt>אפשר לצבור?</dt><dd>כן – עד 2 ימים לשנה הבאה</dd>
+      <dt>יש פדיון כספי בסיום העסקה?</dt><dd>לא</dd>
+      <dt>הערות חשובות</dt><dd>רק אם עבד/ה או שהה/תה בחופשה יום לפני או יום אחרי</dd>
+    </dl></div></div>
+    <div class="card q"><button class="q-head" aria-expanded="false"><span>ימי מחלה</span><span><span class="num gold-text">18</span> <span class="chev">⌄</span></span></button>
+    <div class="q-body"><dl>
+      <dt>כמה מגיע לי בשנה</dt><dd>18 ימים בשנה (יום וחצי לחודש)</dd>
+      <dt>אפשר לצבור?</dt><dd>ללא הגבלה</dd>
+      <dt>יש פדיון כספי בסיום העסקה?</dt><dd>לא</dd>
+      <dt>הערות חשובות</dt><dd>כוללים מחלות בני משפחה</dd>
+    </dl></div></div>
+    <div class="card q"><button class="q-head" aria-expanded="false"><span>ימי הצהרה</span><span><span class="num gold-text">2</span> <span class="chev">⌄</span></span></button>
+    <div class="q-body"><dl>
+      <dt>כמה מגיע לי בשנה</dt><dd>2 ימים מתוך ימי המחלה</dd>
+      <dt>אפשר לצבור?</dt><dd>כחלק מימי המחלה</dd>
+      <dt>יש פדיון כספי בסיום העסקה?</dt><dd>לא</dd>
+      <dt>הערות חשובות</dt><dd>אין צורך באישור רפואי</dd>
+    </dl></div></div>
+    <div class="card q"><button class="q-head" aria-expanded="false"><span>ימי בחינה</span><span><span class="num gold-text">1</span> <span class="chev">⌄</span></span></button>
+    <div class="q-body"><dl>
+      <dt>כמה מגיע לי בשנה</dt><dd>יום אחד בשנה</dd>
+      <dt>אפשר לצבור?</dt><dd>כן</dd>
+      <dt>יש פדיון כספי בסיום העסקה?</dt><dd>לא</dd>
+      <dt>הערות חשובות</dt><dd>לשימוש אחרי 3 חודשי עבודה, באופן יחסי</dd>
+    </dl></div></div></div></div></div>
     <div class="card note-box">
       <h3>חשוב לשים לב</h3>
       <ul>
@@ -194,7 +263,7 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:28px 0;backgroun
   <section class="reveal">
     <div class="orn">✦</div>
     <h2>איזה עוד ימים מיוחדים יש <span class="gold-text">לאורך השנה?</span></h2>
-    <div class="sgrid" id="special"></div>
+    <div class="sgrid" id="special"><button class="sday" data-i="0"><span class="circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4M8 15h3M13 15h3"></path></svg></span>ערבי חג</button><button class="sday" data-i="1"><span class="circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>ימי עבודה מקוצרים</button><button class="sday" data-i="2"><span class="circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></span>חופשה מרוכזת</button><button class="sday" data-i="3"><span class="circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></svg></span>צומות</button><button class="sday" data-i="4"><span class="circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"></path></svg></span>ימי חג ומועד</button></div>
     <p class="partial">אני עובד/ת במשרה חלקית? הזכאות הינה באופן יחסי.</p>
   </section>
 
@@ -203,7 +272,7 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:28px 0;backgroun
   <section class="reveal">
     <div class="orn">✦</div>
     <h2>יש <span class="accent">לי</span> שאלה:</h2>
-    <div class="faq" id="faq"></div>
+    <div class="faq" id="faq"><div class="card fq"><button aria-expanded="false"><span class="ic">?</span><span>מתי אפשר להתחיל להשתמש בימי החופשה והמחלה?</span></button><div class="ans">ניתן לנצל ימי חופשה וימי מחלה לאחר 3 חודשי עבודה. הזכאות לכל אחת מהמכסות הינה בהתאם לחלקיות העסקה.</div></div><div class="card fq"><button aria-expanded="false"><span class="ic">?</span><span>אפשר לצבור ימי חופשה לשנה הבאה?</span></button><div class="ans">כן. עובדי מדינה בתקן ואזרחים ותיקים רשאים לצבור עד 55 ימים לשנה הבאה, וסטודנטים עד 4 ימים בכל שנה ועד 30 ימים סה״כ. חשוב להקפיד לנצל לפחות 14 ימים בכל שנה.</div></div><div class="card fq"><button aria-expanded="false"><span class="ic">?</span><span>יש פדיון כספי עבור הימים שלא ניצלתי?</span></button><div class="ans">ימי חופשה רגילים ניתנים לפדיון בסיום העסקה. ימי בחירה אישיים, ימי הצהרה וימי בחינה אינם ניתנים לפדיון. בימי מחלה – ייתכן פדיון בהתאם לוותק ולגיל הפרישה.</div></div><div class="card fq"><button aria-expanded="false"><span class="ic">?</span><span>אפשר לנצל ימי בחירה אישיים ברצף?</span></button><div class="ans">לא. ימי הבחירה האישיים אינם ניתנים לניצול ברצף. סטודנטים זכאים לימי בחירה רק אם עבדו או שהו בחופשה יום לפני או יום אחרי.</div></div><div class="card fq"><button aria-expanded="false"><span class="ic">?</span><span>צריך אישור רפואי עבור ימי הצהרה?</span></button><div class="ans">לא. ימי ההצהרה ניתנים כחלק מימי המחלה ואין צורך באישור רפואי.</div></div><div class="card fq"><button aria-expanded="false"><span class="ic">?</span><span>איך נספרים ימי מחלה?</span></button><div class="ans">ימי מחלה מנוכים קלנדרית, כולל בימי מנוחה וסופי שבוע, בהתאם לאישור רופא. כמו כן חל איסור לעבוד בעת מחלת עובד/ת שניתנה על ידי רופא/ה.</div></div><div class="card fq"><button aria-expanded="false"><span class="ic">?</span><span>מי זכאי/ת לימים מקוצרים?</span></button><div class="ans">ימי עבודה מקוצרים בערבי החגים ניתנים לעובדים חודשיים המועסקים לפחות 5 ימים בשבוע. סטודנטים ואזרחים ותיקים לא זכאים לימים אלו. הזכאות כולה הינה באופן יחסי להיקף המשרה.</div></div><div class="card fq"><button aria-expanded="false"><span class="ic">?</span><span>אני עובד/ת במשמרות במעון או במסגרת – מה חל עליי?</span></button><div class="ans">המכסות השנתיות זהות לכלל עובדי המדינה. ההסדרים בערבי חג, בחופשה המרוכזת ובימים המקוצרים נקבעים לפי סידור העבודה ביחידה – פנו לנציג/ת משאבי האנוש ביחידה שלכם.</div></div><div class="card fq"><button aria-expanded="false"><span class="ic">?</span><span>אני עובד/ת במשרה חלקית – מה המכסה שלי?</span></button><div class="ans">הזכאות הינה יחסית להיקף המשרה, בכל אחת מהמכסות: ימי חופשה, ימי מחלה, ימי הצהרה ושאר ההטבות.</div></div><div class="card fq"><button aria-expanded="false"><span class="ic">?</span><span>למי פונים בשאלה על המכסות שלי?</span></button><div class="ans">קרן נחמיאס ממינהל משאבי האנוש היא הכתובת הראשונה לבירור היתרה, אופן הדיווח והמסמכים הנדרשים.</div></div></div>
   </section>
 
   <div class="divider"></div>
@@ -221,7 +290,7 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:28px 0;backgroun
     <div class="orn">✦</div>
     <h2>יש לך <span class="gold-text">שאלה?</span></h2>
     <p class="lead">צוות משאבי האנוש כאן לרשותך.</p>
-    <div class="cgrid" id="contacts"></div>
+    <div class="cgrid" id="contacts"><div class="card unit"><h4>מינהל משאבי אנוש</h4><ul><li>קרן נחמיאס</li></ul></div></div>
   </section>
 
   <div class="divider"></div>
@@ -230,7 +299,7 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:28px 0;backgroun
     <div class="card fb">
       <h2 style="margin:0 0 4px;font-size:1.5rem">האם המידע הזה עזר לך?</h2>
       <form id="fbForm">
-        <div class="rates" id="rates"></div>
+        <div class="rates" id="rates"><button type="button" class="rate" data-v="5"><span>😉</span><span>מעולה</span><span class="accent">5</span></button><button type="button" class="rate" data-v="4"><span>😊</span><span>טוב</span><span class="accent">4</span></button><button type="button" class="rate" data-v="3"><span>😐</span><span>בסדר</span><span class="accent">3</span></button><button type="button" class="rate" data-v="2"><span>🙁</span><span>פחות</span><span class="accent">2</span></button><button type="button" class="rate" data-v="1"><span>😢</span><span>לא עזר</span><span class="accent">1</span></button></div>
         <textarea id="fbText" placeholder="יש עוד משהו שתרצו לשתף? נשמח לשמוע..."></textarea>
         <button class="btn" type="submit" id="fbSend" disabled>ספרו לנו!</button>
       </form>
@@ -242,7 +311,7 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:28px 0;backgroun
 
 <footer>
   <div class="wrap">
-    <p class="copy">© <span id="yr"></span> משרד הרווחה והביטחון החברתי · מינהל משאבי אנוש</p>
+    <p class="copy">© <span id="yr">2026</span> משרד הרווחה והביטחון החברתי · מינהל משאבי אנוש</p>
   </div>
 </footer>
 
