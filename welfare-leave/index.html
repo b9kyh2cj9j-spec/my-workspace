@@ -100,7 +100,7 @@ h2{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:800;text-align:center;margin:1
 .fq.open .ans{max-height:300px;padding-bottom:20px}
 
 /* contacts */
-.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.cgrid{display:grid;grid-template-columns:minmax(0,320px);justify-content:center;gap:14px;text-align:center}
 .unit{padding:18px 20px}
 .unit h4{color:var(--gold-l);font-size:1.05rem;margin-bottom:8px}
 .unit li{list-style:none;padding:3px 0;border-bottom:1px dashed rgba(212,175,55,.15)}
@@ -211,8 +211,6 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:28px 0;backgroun
   <section class="reveal closing">
     <div class="orn">✦</div>
     <p class="big gold-text">מקווים שנהניתם מהמנה</p>
-    <p>תרצו להזמין עוד מהתפריט?</p>
-    <a class="btn" id="portalLink" href="#">היכנסו לאתר המרכז של הון של זכויות</a>
     <div class="card intro" style="margin-top:40px">
       <p class="big gold-text" style="font-size:1.5rem">אנו מאחלות לך חופשה נעימה ובריאות איתנה.</p>
       <p>המכסות כאן כדי לשרת אותך – נצלו אותן בכיף ובשלווה</p>
@@ -222,7 +220,7 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:28px 0;backgroun
   <section class="reveal" id="contact">
     <div class="orn">✦</div>
     <h2>יש לך <span class="gold-text">שאלה?</span></h2>
-    <p class="lead">צוות משאבי האנוש במטה, במחוזות וביחידות כאן לרשותך.</p>
+    <p class="lead">צוות משאבי האנוש כאן לרשותך.</p>
     <div class="cgrid" id="contacts"></div>
   </section>
 
@@ -244,12 +242,6 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:28px 0;backgroun
 
 <footer>
   <div class="wrap">
-    <p style="font-weight:700;color:var(--gold-l)">סט הזכויות</p>
-    <p class="small" style="margin:0 0 12px">אפשר לעבור בין כל שלבי הזכויות</p>
-    <nav class="fnav">
-      <a id="portalLink2" href="#">הון של זכויות – הפורטל המרכזי<small>כל הזכויות במקום אחד</small></a>
-      <a class="cur" href="#">מכסות חופשה ומחלה<small>ימי חופשה, מחלה ומנוחה · העמוד הנוכחי</small></a>
-    </nav>
     <p class="copy">© <span id="yr"></span> משרד הרווחה והביטחון החברתי · מינהל משאבי אנוש</p>
   </div>
 </footer>
@@ -259,14 +251,6 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:28px 0;backgroun
 </div>
 
 <script>
-/* ===== הגדרות לעריכה ===== */
-const CONFIG = {
-  // קישור לפורטל המרכזי של "הון של זכויות" במשרד הרווחה
-  portalUrl: "#",
-  // כתובת מייל לקבלת משוב (אופציונלי). אם ריק – המשוב יוצג כתודה בלבד.
-  feedbackEmail: ""
-};
-
 /* מכסות – לפי התקשי"ר, זהות לכלל עובדי המדינה */
 const QUOTAS = [
   {group:"עובדי מדינה בתקן ואזרחים ותיקים", icon:"★", items:[
@@ -302,10 +286,9 @@ const SPECIAL = [
     <p class="small">* סטודנטים ואזרחים ותיקים לא זכאים לימים אלו.</p>`},
   {title:"חופשה מרוכזת", icon:"sun", html:`<p>במשרדנו מתקיימת חופשה מרוכזת בשתי תקופות בשנה:</p>${rows([["חג סוכות","ינוכו 2.5 ימי חופשה"],["חג פסח","ינוכו 2 ימי חופשה"]])}
     <div class="know"><b>נתבקשתם לעבוד בחופשה מרוכזת?</b> הדבר מצריך אישור מיוחד – פנו לצוות משאבי האנוש לקבל אישור לכך. עובדי מעונות, מסגרות ומוקדי חירום עובדים לפי סידור העבודה ביחידה.</div>`},
-  {title:"צומות", icon:"moon", html:`<p>עובדים הצמים בימי צום לפי דתם, רשאים לאחר לעבודה או לסיים את יום עבודתם שעה וחצי לפני הזמן, כל אחד לפי התקן שלו.</p>
-    <div class="know"><b>עובדים בדור א׳</b> יהיו זכאים לעיגולי שעון ביום הצום בלבד (החתמת כרטיס עד שעה 7:42 תיחשב לשעה 7:30), ובנוסף יהיו זכאים לשעות חוסר/מאגר חודשי (חוסר של עד 1.7 בחודש זה).</div>
+  {title:"צומות", icon:"moon", html:`<p>עובדים הצמים בימי צום רשאים לאחר לעבודה או לסיים את יום עבודתם שעה וחצי לפני הזמן, כל אחד לפי התקן שלו.</p>
     <p class="small">* סטודנטים ואזרחים ותיקים זכאים לשעות צום רק אם הצום חל ביום עבודתם הקבוע, בו הם עובדים בדרך כלל לפחות 8 שעות.</p>`},
-  {title:"ימי חג ומועד", icon:"star", html:`<p>ימי החגים עצמם והמועדים מזכים בתשלום מלא. עובדים לא יהודים רשאים לבחור את המועדים או על פי דתם או על פי לוח השנה היהודי.</p>`}
+  {title:"ימי חג ומועד", icon:"star", html:`<p>ימי החגים עצמם והמועדים מזכים בתשלום מלא.</p>`}
 ];
 
 const FAQ = [
@@ -318,19 +301,12 @@ const FAQ = [
   ["מי זכאי/ת לימים מקוצרים?","ימי עבודה מקוצרים בערבי החגים ניתנים לעובדים חודשיים המועסקים לפחות 5 ימים בשבוע. סטודנטים ואזרחים ותיקים לא זכאים לימים אלו. הזכאות כולה הינה באופן יחסי להיקף המשרה."],
   ["אני עובד/ת במשמרות במעון או במסגרת – מה חל עליי?","המכסות השנתיות זהות לכלל עובדי המדינה. ההסדרים בערבי חג, בחופשה המרוכזת ובימים המקוצרים נקבעים לפי סידור העבודה ביחידה – פנו לנציג/ת משאבי האנוש ביחידה שלכם."],
   ["אני עובד/ת במשרה חלקית – מה המכסה שלי?","הזכאות הינה יחסית להיקף המשרה, בכל אחת מהמכסות: ימי חופשה, ימי מחלה, ימי הצהרה ושאר ההטבות."],
-  ["למי פונים בשאלה על המכסות שלי?","נציג/ת משאבי האנוש במטה, במחוז או ביחידה שלך הוא/היא הכתובת הראשונה לבירור היתרה, אופן הדיווח והמסמכים הנדרשים."]
+  ["למי פונים בשאלה על המכסות שלי?","קרן נחמיאס ממינהל משאבי האנוש היא הכתובת הראשונה לבירור היתרה, אופן הדיווח והמסמכים הנדרשים."]
 ];
 
-/* אנשי קשר – יש להשלים שמות לפי היחידות */
+/* איש/אשת קשר */
 const CONTACTS = [
-  {unit:"מטה המשרד – ירושלים", people:["שם נציג/ה","שם נציג/ה"]},
-  {unit:"מחוז ירושלים", people:["שם נציג/ה"]},
-  {unit:"מחוז תל אביב והמרכז", people:["שם נציג/ה"]},
-  {unit:"מחוז חיפה והצפון", people:["שם נציג/ה"]},
-  {unit:"מחוז באר שבע והדרום", people:["שם נציג/ה"]},
-  {unit:"מעונות ומסגרות חוץ-ביתיות", people:["שם נציג/ה"]},
-  {unit:"מינהל משאבי אנוש – שכר ותנאי שירות", people:["שם נציג/ה"]},
-  {unit:"רווחה ארגונית", people:["שם נציג/ה"]}
+  {unit:"מינהל משאבי אנוש", people:["קרן נחמיאס"]}
 ];
 
 /* ===== רינדור ===== */
@@ -360,7 +336,6 @@ document.querySelectorAll(".fq button").forEach(b=>b.onclick=()=>{const c=b.pare
 
 $("#contacts").innerHTML = CONTACTS.map(c=>`<div class="card unit"><h4>${esc(c.unit)}</h4><ul>${c.people.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></div>`).join("");
 
-["portalLink","portalLink2"].forEach(id=>document.getElementById(id).href=CONFIG.portalUrl);
 $("#yr").textContent = new Date().getFullYear();
 
 const RATES=[["😉","מעולה",5],["😊","טוב",4],["😐","בסדר",3],["🙁","פחות",2],["😢","לא עזר",1]];
@@ -369,10 +344,6 @@ $("#rates").innerHTML = RATES.map(([e,l,v])=>`<button type="button" class="rate"
 document.querySelectorAll(".rate").forEach(b=>b.onclick=()=>{document.querySelectorAll(".rate").forEach(x=>x.classList.remove("sel"));b.classList.add("sel");rating=+b.dataset.v;$("#fbSend").disabled=false});
 $("#fbForm").onsubmit=e=>{
   e.preventDefault();
-  if(CONFIG.feedbackEmail){
-    const body=encodeURIComponent(`דירוג: ${rating}/5\n${$("#fbText").value}`);
-    location.href=`mailto:${CONFIG.feedbackEmail}?subject=${encodeURIComponent("משוב – מכסות חופשה ומחלה")}&body=${body}`;
-  }
   $("#fbForm").style.display="none"; $("#thanks").style.display="block";
 };
 
